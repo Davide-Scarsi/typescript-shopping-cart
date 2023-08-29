@@ -3,6 +3,7 @@ height: 30px;
 aspect-ratio: 1;
 border-radius: 50%;
 font-size: 25px;
+margin-inline: 5px ;
 }
 
 .AddItem-container .counter{
@@ -10,7 +11,7 @@ font-size: 25px;
     color: black;
     height: 30px;
     aspect-ratio: 1;
-    border-radius: 50%;
+    border-radius: 7%;
     font-size: 25px;
     
 }
