@@ -30,12 +30,15 @@ export default function FunctionalComponentAddItem() {
         
         const insert = (document.getElementById('insert') as HTMLInputElement).value
         console.log(insert);
+
         
-        const shoppingCart : string[] = []
-        shoppingCart.push(insert)
-        setShoppingList(shoppingCart)
+        
+        setShoppingList((shoppingList: string[])=> [...shoppingList, insert] )
     }
 
+    function deleteList (){
+        setShoppingList([])
+    }
 
 
 
@@ -51,6 +54,7 @@ export default function FunctionalComponentAddItem() {
                     <span className="counter all-centered">0</span>
                     <button className="plus-button all-centered">+</button>
                     <button className="confirm-button all-centered ms-3" onClick={()=>{addToChart()}}>CONFERMA</button>
+                    <button className="confirm-button all-centered ms-3" onClick={()=>{deleteList()}}>CANCELLA</button>
                 </div>
             </div>
         </div>

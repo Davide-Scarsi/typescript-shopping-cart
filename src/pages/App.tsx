@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import AddItem from "../components/addItem/addItem";
-import Item from "../components/item/item";
 
 function App() {
 
@@ -26,11 +25,7 @@ function App() {
           {/* row */}
           <AddItem />
 
-          <div className='row'>
-            <div className='col-12 all-centered'>
-              <Item />
-            </div>
-          </div>
+          
 
         </div>
 
