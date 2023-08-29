@@ -8,8 +8,8 @@ export default function FunctionalComponentAddItem() {
 
 
 
-    const [shoppingList, setShoppingList] = useState<any>(null);
-    const [counter, setCounter] = useState<any>(0);
+    const [shoppingList, setShoppingList] = useState<any>([]);
+    const [counter, setCounter] = useState<number>(0);
 
 
     // Questa funzione parte la prima volta che viene caricata la pagina e va a caricare LISTASPESA dal local storage
@@ -65,6 +65,15 @@ export default function FunctionalComponentAddItem() {
         setCounter((counter: number) => Math.max((counter - 1), 0))
     }
 
+    //ELIMINA SINGOLO OGGETTO
+    const deleteItem =  (e : any) : void  =>{
+
+        let buttonValue : number = Number(e.value)
+       
+       setShoppingList(JSON.parse(JSON.stringify(shoppingList.toSpliced(buttonValue, 1))))
+
+        
+    }
 
 
 
@@ -96,7 +105,7 @@ export default function FunctionalComponentAddItem() {
                                 <div className="mx-4 item-name-box">
                                     <span >{shoppingList[0]}</span>
                                 </div>
-                                <button className="mx-4" value={itemCounter}>X</button>
+                                <button className="mx-4" value={itemCounter} onClick={e=>deleteItem(e.target as HTMLButtonElement )}>X</button>
                             </div>
 
 
