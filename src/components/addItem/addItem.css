@@ -1,0 +1,16 @@
+.AddItem-container :is(.minus-button, .plus-button){
+height: 30px;
+aspect-ratio: 1;
+border-radius: 50%;
+font-size: 25px;
+}
+
+.AddItem-container .counter{
+    background-color: white;
+    color: black;
+    height: 30px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    font-size: 25px;
+    
+}
