@@ -27,32 +27,42 @@ export default function FunctionalComponentAddItem() {
 
     //INPUT PER RIEMPIRE CARRELLO --------------------------------------------------------------------------------------
 
+
     async function addToCart() {
-        console.log("click");
 
         let insert = (document.getElementById('insert') as HTMLInputElement)
 
-        const item = [insert.value, counter]
+        if (insert.value && counter !== 0) {
 
-       await setShoppingList((shoppingList: string[] ) => [...shoppingList, item])
+            const item = [insert.value, counter]
 
-       insert.value = ""
-       setCounter(0)
+
+            await setShoppingList((shoppingList: string[] | number[]) => [...shoppingList, item])
+
+            insert.value = ""
+            setCounter(0)
+
+        }
+
     }
 
+
+    // Contatore di item agganciato come Key al frame
+    let itemCounter: number = 0
 
     // BOTTONE PER CANCELLARE CARRELLO
 
     function deleteCart() {
         setShoppingList([])
+        itemCounter = 0
     }
 
     //CONTATORE
-    function counterIncrease(){
-        setCounter((counter: number)=>Math.min((counter +1),99))
+    function counterIncrease() {
+        setCounter((counter: number) => Math.min((counter + 1), 99))
     }
-    function counterDecrease(){
-        setCounter((counter: number)=>Math.max((counter -1),0))
+    function counterDecrease() {
+        setCounter((counter: number) => Math.max((counter - 1), 0))
     }
 
 
@@ -74,15 +84,26 @@ export default function FunctionalComponentAddItem() {
             </div>
         </div>
 
-        <div className="row">
-            <div className='col-12 all-centered'>
-                <div className="mt-5 all-entered flex-column text-center">
-                {shoppingList &&
-                shoppingList.map((e:string) =>{
-                   return <p>{e}</p>
+        <div className="row all-centered mt-5">
+            <div className='col-9 d-flex flex-column'>
+            {shoppingList &&
+                shoppingList.map((shoppingList: string) => {
+                    return <React.Fragment key={itemCounter++}>
+                            <div className="d-flex">
+
+                                <span className="mx-4">ID: {itemCounter}</span>
+                                <span className="mx-4">N° {shoppingList[1]}</span>
+                                <div className="mx-4 item-name-box">
+                                    <span >{shoppingList[0]}</span>
+                                </div>
+                                <button className="mx-4" value={itemCounter}>X</button>
+                            </div>
+
+
+                    </React.Fragment>
                 })}
+
                 </div>
-            </div>
         </div>
 
 
