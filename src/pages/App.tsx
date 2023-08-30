@@ -16,9 +16,9 @@ function App() {
         <div className='container'>
           <div className='row'>
             <div className='col-12 all-centered'>
-              <span className="material-symbols-outlined shopping-cart-icon">shopping_cart</span>
+              <span className="mt-3 material-symbols-outlined shopping-cart-icon">shopping_cart</span>
 
-              <h1>Carrello della spesa</h1>
+              <h1 className='ms-1 mt-4'>Carrello della spesa</h1>
             </div>
           </div>
 

@@ -16,6 +16,16 @@ margin-inline: 5px ;
     
 }
 
+#insert{
+    margin-block: 15px;
+    background-color: rgb(243, 229, 200);
+    width: 95%;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 0;
+    text-align: center;
+}
+
 .cart-list-container{
     background-color: rgb(238, 216, 168);
     color: black;
@@ -23,9 +33,14 @@ margin-inline: 5px ;
     text-transform: uppercase;
 }
 
-.changeItemStatus-button, .deleteItem-button{
+.transparent-button{
     background-color: rgba(240, 248, 255, 0);
-    border: 0;
+    border: 0; 
+}
+
+.insert-container .transparent-button{
+    text-shadow: 1px 1px 3px rgb(73, 73, 73);   
+    color: white;  
 }
 
 .status-button{
@@ -37,7 +52,8 @@ margin-inline: 5px ;
 }
 
 .item-name-box{
-    width: 250px;
+    width: 200px;
+    min-width: 200px;
     margin-block: 5px;
     background-color: rgb(209, 165, 108);
     border-radius: 6px;

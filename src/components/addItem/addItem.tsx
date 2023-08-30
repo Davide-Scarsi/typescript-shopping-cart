@@ -75,15 +75,15 @@ export default function FunctionalComponentAddItem() {
 
     }
 
-    
+
 
     //COLORA OGGETTO
     const changeItemStatus = (e: any): void => {
 
-       
+
         let buttonValue: number = Number(e.value)
 
-       
+
 
         const getItem = document.getElementById(`item-${buttonValue}`)
         getItem?.classList.toggle(`marked`)
@@ -96,35 +96,46 @@ export default function FunctionalComponentAddItem() {
 
     return (<>
 
-        <div className='row'>
-            <div className='col-12 all-centered'>
-                <div className='AddItem-container all-centered'>
-                    <input id="insert" placeholder="Inserisci un articolo" type="text" />
-                    <span>N°</span>
-                    <button className="minus-button all-centered" onClick={() => { counterDecrease() }}>-</button>
-                    <span className="counter all-centered">{counter}</span>
-                    <button className="plus-button all-centered" onClick={() => { counterIncrease() }}>+</button>
-                    <button className="confirm-button all-centered ms-3" onClick={() => { addToCart() }}>CONFERMA</button>
-                    <button className="confirm-button all-centered ms-3" onClick={() => { deleteCart() }}>CANCELLA</button>
-                </div>
+
+
+
+        <div className="row insert-container">
+            <div className="col-12 all-centered">
+                <input id="insert" placeholder="Inserisci un articolo" type="text" />
+            </div>
+            <div className="col-12 mt-1 d-flex justify-content-center">
+
+                <span>N°</span>
+                <button className="minus-button all-centered material-symbols-outlined transparent-button" onClick={() => { counterDecrease() }}>indeterminate_check_box</button>
+                <span className="counter all-centered">{counter}</span>
+                <button className="me-5 plus-button all-centered material-symbols-outlined transparent-button" onClick={() => { counterIncrease() }}>add_box</button>
+                <button className="me-2 confirm-button all-centered ms-3 material-symbols-outlined transparent-button" onClick={() => { addToCart() }}>add_shopping_cart</button>
+                <button className="confirm-button all-centered ms-3 material-symbols-outlined transparent-button" onClick={() => { deleteCart() }}>delete</button>
             </div>
         </div>
 
+
+
+
         <div className="row all-centered mt-5">
-            <div className='col-6 d-flex flex-column cart-list-container'>
+            <div className='col-11 col-lg-6 d-flex flex-column cart-list-container'>
                 {shoppingList &&
                     shoppingList.map((shoppingList: string) => {
                         return <React.Fragment key={itemCounter++}>
                             <div className="d-flex">
 
-                                <button id={`status-button-${itemCounter}`} className="mx-4 changeItemStatus-button all-centered material-symbols-outlined" value={itemCounter} onClick={e => changeItemStatus(e.target as HTMLButtonElement)} >check_circle</button>
+                                <button id={`status-button-${itemCounter}`} className="me-2 transparent-button changeItemStatus-button all-centered material-symbols-outlined" value={itemCounter} onClick={e => changeItemStatus(e.target as HTMLButtonElement)} >check_circle</button>
+
                                 {/* <span className="all-centered" >ID: {itemCounter}</span> */}
-                                <span className="mx-4 all-centered">N° {shoppingList[1]}</span>
-                                <div className="mx-4 item-name-box" id={`item-${itemCounter}`}>
-                                    <span className="ms-2">{shoppingList[0]}</span>
+                                <span className="me-2 all-centered">N° {shoppingList[1]}</span>
+
+                                <div className="me-3 item-name-box" id={`item-${itemCounter}`}>
+
+                                    <span className="ms-3">{shoppingList[0]}</span>
+
                                 </div>
-                                <button className="mx-4 deleteItem-button material-symbols-outlined " value={itemCounter} onClick={e => deleteItem(e.target as HTMLButtonElement)}>cancel</button>
-                                
+                                <button className="transparent-button deleteItem-button material-symbols-outlined " value={itemCounter} onClick={e => deleteItem(e.target as HTMLButtonElement)}>cancel</button>
+
 
                             </div>
 
