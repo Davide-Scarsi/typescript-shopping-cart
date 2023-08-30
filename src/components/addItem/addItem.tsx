@@ -70,9 +70,10 @@ export default function FunctionalComponentAddItem() {
 
         let buttonValue: number = Number(e.value)
 
-        setShoppingList(JSON.parse(JSON.stringify(shoppingList.toSpliced(buttonValue, 1))))
+        // setShoppingList(JSON.parse(JSON.stringify(shoppingList.toSpliced(buttonValue, 1))))
 
-
+        const itemContainer = document.getElementById(`item-container-${buttonValue}`)
+        itemContainer!.classList.toggle(`d-none`)
     }
 
 
@@ -122,7 +123,7 @@ export default function FunctionalComponentAddItem() {
                 {shoppingList &&
                     shoppingList.map((shoppingList: string) => {
                         return <React.Fragment key={itemCounter++}>
-                            <div className="d-flex">
+                            <div className="d-flex " id={`item-container-${itemCounter}`}>
 
                                 <button id={`status-button-${itemCounter}`} className="me-2 transparent-button changeItemStatus-button all-centered material-symbols-outlined" value={itemCounter} onClick={e => changeItemStatus(e.target as HTMLButtonElement)} >check_circle</button>
 
