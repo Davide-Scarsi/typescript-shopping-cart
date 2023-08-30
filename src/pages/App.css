@@ -43,6 +43,15 @@
   box-sizing: border-box;
 }
 
+.my-app{
+  background-color: rgb(209, 165, 108);
+  color: white;
+}
+
+.my-app h1{
+  text-shadow: 2px 2px 3px rgb(73, 73, 73)
+}
+
 .all-centered{
   display: flex;
   justify-content: center;
@@ -51,6 +60,7 @@
 
 .shopping-cart-icon{
   font-size: 40px !important;
+  text-shadow: 2px 2px 3px rgb(73, 73, 73)
 }
 
 

@@ -16,6 +16,36 @@ margin-inline: 5px ;
     
 }
 
+.cart-list-container{
+    background-color: rgb(238, 216, 168);
+    color: black;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.changeItemStatus-button, .deleteItem-button{
+    background-color: rgba(240, 248, 255, 0);
+    border: 0;
+}
+
+.status-button{
+    color: rgb(32, 189, 32);
+}
+
+.deleteItem-button{
+    color: rgb(216, 81, 81);
+}
+
 .item-name-box{
-    width: 200px;
+    width: 250px;
+    margin-block: 5px;
+    background-color: rgb(209, 165, 108);
+    border-radius: 6px;
+}
+
+.marked{
+    background-color: rgb(69, 146, 69);
+    text-decoration: line-through;
+    color: rgb(169, 179, 179);
+    
 }

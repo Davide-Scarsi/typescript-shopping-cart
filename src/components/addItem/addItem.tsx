@@ -9,7 +9,7 @@ export default function FunctionalComponentAddItem() {
 
 
     const [shoppingList, setShoppingList] = useState<any>([]);
-    const [counter, setCounter] = useState<number>(0);
+    const [counter, setCounter] = useState<number>(1);
 
 
     // Questa funzione parte la prima volta che viene caricata la pagina e va a caricare LISTASPESA dal local storage
@@ -32,7 +32,7 @@ export default function FunctionalComponentAddItem() {
 
         let insert = (document.getElementById('insert') as HTMLInputElement)
 
-        if (insert.value && counter !== 0) {
+        if (insert.value) {
 
             const item = [insert.value, counter]
 
@@ -40,7 +40,7 @@ export default function FunctionalComponentAddItem() {
             await setShoppingList((shoppingList: string[] | number[]) => [...shoppingList, item])
 
             insert.value = ""
-            setCounter(0)
+            setCounter(1)
 
         }
 
@@ -62,17 +62,34 @@ export default function FunctionalComponentAddItem() {
         setCounter((counter: number) => Math.min((counter + 1), 99))
     }
     function counterDecrease() {
-        setCounter((counter: number) => Math.max((counter - 1), 0))
+        setCounter((counter: number) => Math.max((counter - 1), 1))
     }
 
     //ELIMINA SINGOLO OGGETTO
-    const deleteItem =  (e : any) : void  =>{
+    const deleteItem = (e: any): void => {
 
-        let buttonValue : number = Number(e.value)
+        let buttonValue: number = Number(e.value)
+
+        setShoppingList(JSON.parse(JSON.stringify(shoppingList.toSpliced(buttonValue, 1))))
+
+
+    }
+
+    
+
+    //COLORA OGGETTO
+    const changeItemStatus = (e: any): void => {
+
        
-       setShoppingList(JSON.parse(JSON.stringify(shoppingList.toSpliced(buttonValue, 1))))
+        let buttonValue: number = Number(e.value)
 
-        
+       
+
+        const getItem = document.getElementById(`item-${buttonValue}`)
+        getItem?.classList.toggle(`marked`)
+
+        const getStatusButton = document.getElementById(`status-button-${buttonValue}`)
+        getStatusButton!.classList.toggle(`status-button`)
     }
 
 
@@ -94,25 +111,28 @@ export default function FunctionalComponentAddItem() {
         </div>
 
         <div className="row all-centered mt-5">
-            <div className='col-9 d-flex flex-column'>
-            {shoppingList &&
-                shoppingList.map((shoppingList: string) => {
-                    return <React.Fragment key={itemCounter++}>
+            <div className='col-6 d-flex flex-column cart-list-container'>
+                {shoppingList &&
+                    shoppingList.map((shoppingList: string) => {
+                        return <React.Fragment key={itemCounter++}>
                             <div className="d-flex">
 
-                                <span className="mx-4">ID: {itemCounter}</span>
-                                <span className="mx-4">N° {shoppingList[1]}</span>
-                                <div className="mx-4 item-name-box">
-                                    <span >{shoppingList[0]}</span>
+                                <button id={`status-button-${itemCounter}`} className="mx-4 changeItemStatus-button all-centered material-symbols-outlined" value={itemCounter} onClick={e => changeItemStatus(e.target as HTMLButtonElement)} >check_circle</button>
+                                {/* <span className="all-centered" >ID: {itemCounter}</span> */}
+                                <span className="mx-4 all-centered">N° {shoppingList[1]}</span>
+                                <div className="mx-4 item-name-box" id={`item-${itemCounter}`}>
+                                    <span className="ms-2">{shoppingList[0]}</span>
                                 </div>
-                                <button className="mx-4" value={itemCounter} onClick={e=>deleteItem(e.target as HTMLButtonElement )}>X</button>
+                                <button className="mx-4 deleteItem-button material-symbols-outlined " value={itemCounter} onClick={e => deleteItem(e.target as HTMLButtonElement)}>cancel</button>
+                                
+
                             </div>
 
 
-                    </React.Fragment>
-                })}
+                        </React.Fragment>
+                    })}
 
-                </div>
+            </div>
         </div>
 
 
