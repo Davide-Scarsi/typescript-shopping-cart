@@ -43,8 +43,11 @@
   box-sizing: border-box;
 }
 
+
+
+
 .my-app{
-  background-color: rgb(209, 165, 108);
+  background-color: var(--color1);
   color: white;
 }
 

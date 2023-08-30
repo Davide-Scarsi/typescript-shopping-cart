@@ -50,11 +50,26 @@ export default function FunctionalComponentAddItem() {
     // Contatore di item agganciato come Key al frame
     let itemCounter: number = 0
 
+    // BOTTONE PER APRIRE MODALE
+
+    const Modal = document.getElementById(`my-modal`)
+
+    function openModal() {
+
+        Modal!.classList.add(`my-display`)
+    }
+
+    function closeModal() {
+
+        Modal!.classList.remove(`my-display`)
+    }
+
     // BOTTONE PER CANCELLARE CARRELLO
 
     function deleteCart() {
         setShoppingList([])
         itemCounter = 0
+        closeModal() 
     }
 
     //CONTATORE
@@ -97,10 +112,16 @@ export default function FunctionalComponentAddItem() {
 
     return (<>
 
+            <div id="my-modal" className="all-centered flex-column">
+                <span>CANCELLARE TUTTA LA LISTA?</span>    
+                <div className="mt-4">
+                <button className="me-4 transparent-button  material-symbols-outlined status-button" onClick={() => { deleteCart() }}>check_circle</button>
+                <button className="transparent-button  material-symbols-outlined deleteItem-button" onClick={() => { closeModal() }}>cancel</button>
+                </div>
+            </div>
 
+        <div className="row insert-container position-relative">
 
-
-        <div className="row insert-container">
             <div className="col-12 all-centered">
                 <input maxLength={17} id="insert" placeholder="Inserisci un articolo" type="text" />
             </div>
@@ -111,7 +132,7 @@ export default function FunctionalComponentAddItem() {
                 <span className="mx-1 counter all-centered default-font-size">{counter}</span>
                 <button className="me-5 plus-button all-centered material-symbols-outlined transparent-button" onClick={() => { counterIncrease() }}>add_box</button>
                 <button className="me-2 confirm-button all-centered ms-3 material-symbols-outlined transparent-button" onClick={() => { addToCart() }}>add_shopping_cart</button>
-                <button className="confirm-button all-centered ms-3 material-symbols-outlined transparent-button" onClick={() => { deleteCart() }}>delete</button>
+                <button className="confirm-button all-centered ms-3 material-symbols-outlined transparent-button" onClick={() => { openModal() }}>delete</button>
             </div>
         </div>
 
