@@ -105,9 +105,9 @@ export default function FunctionalComponentAddItem() {
             </div>
             <div className="col-12 mt-1 d-flex justify-content-center">
 
-                <span>N°</span>
+                <span className="all-centered default-font-size">N°</span>
                 <button className="minus-button all-centered material-symbols-outlined transparent-button" onClick={() => { counterDecrease() }}>indeterminate_check_box</button>
-                <span className="counter all-centered">{counter}</span>
+                <span className="mx-1 counter all-centered default-font-size">{counter}</span>
                 <button className="me-5 plus-button all-centered material-symbols-outlined transparent-button" onClick={() => { counterIncrease() }}>add_box</button>
                 <button className="me-2 confirm-button all-centered ms-3 material-symbols-outlined transparent-button" onClick={() => { addToCart() }}>add_shopping_cart</button>
                 <button className="confirm-button all-centered ms-3 material-symbols-outlined transparent-button" onClick={() => { deleteCart() }}>delete</button>
@@ -127,9 +127,9 @@ export default function FunctionalComponentAddItem() {
                                 <button id={`status-button-${itemCounter}`} className="me-2 transparent-button changeItemStatus-button all-centered material-symbols-outlined" value={itemCounter} onClick={e => changeItemStatus(e.target as HTMLButtonElement)} >check_circle</button>
 
                                 {/* <span className="all-centered" >ID: {itemCounter}</span> */}
-                                <span className="me-2 all-centered">N° {shoppingList[1]}</span>
+                                <span className="me-2 all-centered ">N°{shoppingList[1]}</span>
 
-                                <div className="me-3 item-name-box" id={`item-${itemCounter}`}>
+                                <div className="me-2 item-name-box" id={`item-${itemCounter}`}>
 
                                     <span className="ms-3">{shoppingList[0]}</span>
 
