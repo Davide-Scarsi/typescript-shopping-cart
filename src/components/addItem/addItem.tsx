@@ -102,7 +102,7 @@ export default function FunctionalComponentAddItem() {
 
         <div className="row insert-container">
             <div className="col-12 all-centered">
-                <input id="insert" placeholder="Inserisci un articolo" type="text" />
+                <input maxLength={17} id="insert" placeholder="Inserisci un articolo" type="text" />
             </div>
             <div className="col-12 mt-1 d-flex justify-content-center">
 
@@ -128,7 +128,9 @@ export default function FunctionalComponentAddItem() {
                                 <button id={`status-button-${itemCounter}`} className="me-2 transparent-button changeItemStatus-button all-centered material-symbols-outlined" value={itemCounter} onClick={e => changeItemStatus(e.target as HTMLButtonElement)} >check_circle</button>
 
                                 {/* <span className="all-centered" >ID: {itemCounter}</span> */}
-                                <span className="me-2 all-centered ">N°{shoppingList[1]}</span>
+                                <div className="item-number-box">
+                                <span className="all-centered ">N°{shoppingList[1]}</span>
+                                </div>
 
                                 <div className="me-2 item-name-box" id={`item-${itemCounter}`}>
 

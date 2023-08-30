@@ -64,11 +64,19 @@ margin-inline: 5px ;
 
 
 .item-name-box{
-    width: 200px;
-    min-width: 180px;
+    width: 180px;
+    min-width: 120px;
     margin-block: 5px;
     background-color: rgb(209, 165, 108);
     border-radius: 6px;
+}
+
+.item-number-box{
+    display: flex;
+    align-items: center;
+    width: 50px;
+    padding-inline: 2px;
+
 }
 
 
